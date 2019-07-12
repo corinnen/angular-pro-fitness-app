@@ -5,22 +5,33 @@ import { Routes, RouterModule } from '@angular/router';
 import { Store } from 'store';
 
 // feature modules
+import { AuthModule } from '../auth/auth.module';
+import { HealthModule } from '../health/health.module';
+
 
 // containers
 import { AppComponent } from './containers/app/app.component';
 
 // components
+import { AppNavComponent } from './components/app-nav/app-nav.component';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
 
 // routes
-export const ROUTES: Routes = [];
+export const ROUTES: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'schedule' }
+];
 
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    AuthModule,
+    HealthModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    AppHeaderComponent,
+    AppNavComponent
   ],
   providers: [
     Store
@@ -30,15 +41,3 @@ export const ROUTES: Routes = [];
   ]
 })
 export class AppModule {}
-
-/*
-var firebaseConfig = {
-  apiKey: "AIzaSyCkqCPfSq4gQgT6dWMxpn9quKVpZzt4ihg",
-  authDomain: "fitness-app-9927b.firebaseapp.com",
-  databaseURL: "https://fitness-app-9927b.firebaseio.com",
-  projectId: "fitness-app-9927b",
-  storageBucket: "fitness-app-9927b.appspot.com",
-  messagingSenderId: "448893622377",
-  appId: "1:448893622377:web:dd788c58f32e754f"
-};
-*/
